@@ -6,7 +6,6 @@ import {
   Box,
   CircularProgress,
   Alert,
-  Chip,
 } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 
@@ -50,21 +49,10 @@ function UserDetail() {
     <Box className="userdetail-container">
       {/* ── Header ── */}
       <Box className="userdetail-header">
-        <Box className="userdetail-avatar">
-          {user.first_name[0]}
-          {user.last_name[0]}
-        </Box>
         <Box>
           <Typography variant="h4" fontWeight={700}>
             {user.first_name} {user.last_name}
           </Typography>
-          <Chip
-            label={user.occupation}
-            size="small"
-            color="primary"
-            variant="outlined"
-            sx={{ mt: 0.5 }}
-          />
         </Box>
       </Box>
 
