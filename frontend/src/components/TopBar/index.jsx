@@ -24,7 +24,7 @@ function TopBar() {
       <Toolbar>
         {/* Left – app / student name */}
         <Typography variant="h6" className="topbar-title" noWrap>
-          PhotoApp
+          Lê Hải Sơn
         </Typography>
 
         {/* Center – current view context */}
