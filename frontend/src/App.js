@@ -23,13 +23,10 @@ const theme = createTheme({
 
 function App() {
   const [topBarText, setTopBarText] = useState("");
-  const [advancedMode, setAdvancedMode] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
-      <AppContext.Provider
-        value={{ topBarText, setTopBarText, advancedMode, setAdvancedMode }}
-      >
+      <AppContext.Provider value={{ topBarText, setTopBarText }}>
         <Router>
           <Grid container spacing={2}>
             {/* ── Top Bar ── */}

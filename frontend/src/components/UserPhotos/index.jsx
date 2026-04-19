@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Typography,
   Box,
@@ -8,17 +8,12 @@ import {
   Divider,
   CircularProgress,
   Alert,
-  Button,
-  IconButton,
-  Tooltip,
 } from "@mui/material";
 import {
-  ArrowBackIos,
-  ArrowForwardIos,
   ChatBubbleOutline,
   AccessTime,
 } from "@mui/icons-material";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import fetchModel from "../../lib/fetchModelData";
 import { useAppContext } from "../../context/AppContext";
@@ -106,22 +101,12 @@ function PhotoCard({ photo }) {
  */
 function UserPhotos() {
   const { userId } = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const { setTopBarText, advancedMode } = useAppContext();
-
-  // Current photo index (advanced mode)
-  const rawIdx = parseInt(searchParams.get("idx") || "0", 10);
-  const photoIdx = isNaN(rawIdx) ? 0 : rawIdx;
-
-  const goTo = useCallback(
-    (idx) => setSearchParams({ idx: String(idx) }, { replace: false }),
-    [setSearchParams]
-  );
+  const { setTopBarText } = useAppContext();
 
   useEffect(() => {
     setLoading(true);
@@ -142,13 +127,6 @@ function UserPhotos() {
       });
   }, [userId, setTopBarText]);
 
-  // Keep idx in bounds when photos load or advancedMode changes
-  useEffect(() => {
-    if (photos.length > 0 && photoIdx >= photos.length) {
-      goTo(photos.length - 1);
-    }
-  }, [photos, photoIdx, goTo]);
-
   if (loading) return <CircularProgress size={32} sx={{ m: 3 }} />;
   if (error) return <Alert severity="error">{error}</Alert>;
   if (photos.length === 0)
@@ -157,73 +135,6 @@ function UserPhotos() {
         Người dùng này chưa có ảnh nào.
       </Typography>
     );
-
-  /* ── Advanced mode: single-photo stepper ── */
-  if (advancedMode) {
-    const current = photos[photoIdx] || photos[0];
-    const isFirst = photoIdx === 0;
-    const isLast = photoIdx === photos.length - 1;
-
-    return (
-      <Box className="userphotos-container">
-        {/* Stepper controls */}
-        <Box className="stepper-bar">
-          <Tooltip title="Ảnh trước">
-            <span>
-              <IconButton
-                onClick={() => goTo(photoIdx - 1)}
-                disabled={isFirst}
-                color="primary"
-              >
-                <ArrowBackIos />
-              </IconButton>
-            </span>
-          </Tooltip>
-
-          <Typography variant="body2" color="text.secondary">
-            Ảnh {photoIdx + 1} / {photos.length}
-          </Typography>
-
-          <Tooltip title="Ảnh tiếp theo">
-            <span>
-              <IconButton
-                onClick={() => goTo(photoIdx + 1)}
-                disabled={isLast}
-                color="primary"
-              >
-                <ArrowForwardIos />
-              </IconButton>
-            </span>
-          </Tooltip>
-        </Box>
-
-        {/* Current photo */}
-        <PhotoCard photo={current} />
-
-        {/* Text nav buttons (alternative) */}
-        <Box className="stepper-text-nav">
-          <Button
-            variant="outlined"
-            startIcon={<ArrowBackIos />}
-            onClick={() => goTo(photoIdx - 1)}
-            disabled={isFirst}
-            size="small"
-          >
-            Trước
-          </Button>
-          <Button
-            variant="outlined"
-            endIcon={<ArrowForwardIos />}
-            onClick={() => goTo(photoIdx + 1)}
-            disabled={isLast}
-            size="small"
-          >
-            Tiếp theo
-          </Button>
-        </Box>
-      </Box>
-    );
-  }
 
   /* ── Normal mode: all photos ── */
   return (

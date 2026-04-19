@@ -3,8 +3,6 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Checkbox,
-  FormControlLabel,
   Box,
 } from "@mui/material";
 
@@ -19,7 +17,7 @@ import "./styles.css";
  * Right : "Bật tính năng nâng cao" checkbox (bonus feature toggle)
  */
 function TopBar() {
-  const { topBarText, advancedMode, setAdvancedMode } = useAppContext();
+  const { topBarText } = useAppContext();
 
   return (
     <AppBar position="fixed" className="topbar-appBar">
@@ -38,21 +36,6 @@ function TopBar() {
           )}
         </Box>
 
-        {/* Right – advanced feature toggle */}
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={advancedMode}
-              onChange={(e) => setAdvancedMode(e.target.checked)}
-              sx={{ color: "white", "&.Mui-checked": { color: "white" } }}
-            />
-          }
-          label={
-            <Typography variant="body2" sx={{ color: "white" }}>
-              Bật tính năng nâng cao
-            </Typography>
-          }
-        />
       </Toolbar>
     </AppBar>
   );

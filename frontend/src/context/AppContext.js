@@ -11,8 +11,6 @@ import { createContext, useContext } from "react";
 export const AppContext = createContext({
   topBarText: "",
   setTopBarText: () => {},
-  advancedMode: false,
-  setAdvancedMode: () => {},
 });
 
 export const useAppContext = () => useContext(AppContext);
