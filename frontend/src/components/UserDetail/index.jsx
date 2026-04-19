@@ -8,12 +8,6 @@ import {
   Alert,
   Chip,
 } from "@mui/material";
-import {
-  LocationOn,
-  Work,
-  Person,
-  PhotoLibrary,
-} from "@mui/icons-material";
 import { Link, useParams } from "react-router-dom";
 
 import fetchModel from "../../lib/fetchModelData";
@@ -66,7 +60,6 @@ function UserDetail() {
           </Typography>
           <Chip
             label={user.occupation}
-            icon={<Work fontSize="small" />}
             size="small"
             color="primary"
             variant="outlined"
@@ -80,21 +73,18 @@ function UserDetail() {
       {/* ── Details ── */}
       <Box className="userdetail-info">
         <Box className="userdetail-row">
-          <LocationOn color="action" fontSize="small" />
           <Typography variant="body1">
             <strong>Địa điểm:</strong> {user.location}
           </Typography>
         </Box>
 
         <Box className="userdetail-row">
-          <Work color="action" fontSize="small" />
           <Typography variant="body1">
             <strong>Nghề nghiệp:</strong> {user.occupation}
           </Typography>
         </Box>
 
         <Box className="userdetail-row" sx={{ alignItems: "flex-start" }}>
-          <Person color="action" fontSize="small" sx={{ mt: 0.3 }} />
           <Typography variant="body1">
             <strong>Giới thiệu:</strong> {user.description}
           </Typography>
@@ -108,7 +98,6 @@ function UserDetail() {
         component={Link}
         to={`/photos/${user._id}`}
         variant="contained"
-        startIcon={<PhotoLibrary />}
         color="primary"
       >
         Xem ảnh của {user.first_name}
