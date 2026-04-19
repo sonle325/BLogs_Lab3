@@ -1,0 +1,8 @@
+.topbar-appBar {
+  z-index: 1200 !important;
+}
+
+.topbar-title {
+  font-weight: 700 !important;
+  min-width: 120px;
+}

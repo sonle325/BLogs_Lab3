@@ -1,0 +1,35 @@
+.userdetail-container {
+  padding: 8px;
+}
+
+.userdetail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.userdetail-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #1976d2;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.userdetail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.userdetail-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

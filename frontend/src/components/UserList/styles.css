@@ -1,0 +1,13 @@
+.userlist-header {
+  padding: 8px 16px !important;
+  font-weight: 600 !important;
+}
+
+.userlist-item {
+  padding-left: 16px !important;
+}
+
+.userlist-item.Mui-selected {
+  background-color: #e3f2fd !important;
+  border-left: 3px solid #1976d2;
+}

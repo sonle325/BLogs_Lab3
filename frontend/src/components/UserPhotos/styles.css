@@ -1,0 +1,79 @@
+.userphotos-container {
+  padding: 8px;
+}
+
+.photo-card {
+  margin-bottom: 24px !important;
+  border-radius: 12px !important;
+}
+
+.photo-img {
+  max-height: 480px;
+  object-fit: contain;
+  background-color: #000;
+}
+
+.photo-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.comments-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.comment-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-author-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.comment-author-link {
+  text-decoration: none !important;
+  color: #1976d2 !important;
+  font-weight: 600 !important;
+}
+
+.comment-author-link:hover {
+  text-decoration: underline !important;
+}
+
+.comment-text {
+  margin-top: 4px !important;
+  color: #333;
+  line-height: 1.5 !important;
+}
+
+/* ── Advanced stepper ── */
+.stepper-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.stepper-text-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
