@@ -22,8 +22,8 @@ const SchemaInfo = require("./db/schemaInfo");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// ─── Kết nối MongoDB Atlas ─────────────────────────────────────
-// ⚠️  Thay bằng connection string của BẠN từ MongoDB Atlas
+// ─── Kết nối MongoDB Atlas 
+
 const MONGODB_URI =
   process.env.MONGODB_URI ||
   "mongodb+srv://sonle325:son123456@cluster0.skzkpow.mongodb.net/photo_app?retryWrites=true&w=majority&appName=Cluster0";
@@ -34,7 +34,7 @@ mongoose
   .catch((err) => { console.error("❌ Lỗi kết nối:", err.message); process.exit(1); });
 
 // ─── Middleware ────────────────────────────────────────────────
-app.use(cors({ origin: "http://localhost:3000", methods: ["GET"] }));
+app.use(cors()); // Cho phép tất cả các origin trên CodeSandbox
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "images")));
 
